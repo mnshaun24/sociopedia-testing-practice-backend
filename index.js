@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -8,6 +7,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import { register } from "./controllers/auth.js";
 
 // configurations
 
@@ -35,6 +35,9 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+
+// routes with files
+app.post("/auth/register", upload.single("picture"), register);
 
 // mongoose setup
 const PORT = process.env.PORT || 6001;
