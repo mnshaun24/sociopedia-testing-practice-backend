@@ -1,5 +1,4 @@
-import { Express } from "express";
-import { verify } from "jsonwebtoken";
+import express from "express";
 import {
   getUser,
   getUserFriends,
